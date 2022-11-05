@@ -8,29 +8,6 @@ import com.tencentcloudapi.tmt.v20180321.TmtClient;
 import com.tencentcloudapi.tmt.v20180321.models.*;
 public class TextTranslate extends Stream
 {
-    public static String TextTranslating(String in,String address) throws IOException, TencentCloudSDKException //输入要翻译的文本 和地址 返回中文 
-    {
-        Credential cred = new Credential("AKIDoUw2uNGtobAWO07ecNN9xWpSs52kgXaL", "kHbfT3RbafVCdMr68Jp7C0YszqS4Uiy6");
-        HttpProfile httpProfile = new HttpProfile();
-        httpProfile.setEndpoint("tmt.tencentcloudapi.com");
-        ClientProfile clientProfile = new ClientProfile();
-        clientProfile.setHttpProfile(httpProfile);
-        TmtClient client = new TmtClient(cred, address, clientProfile);
-        TextTranslateRequest req = new TextTranslateRequest();
-        req.setSourceText(in);
-        String initial = "auto";
-        String finalStr = "zh";
-        req.setSource(initial);
-        req.setTarget(finalStr);
-        req.setProjectId(0L);
-        TextTranslateResponse resp = client.TextTranslate(req);
-        String result = TextTranslateResponse.toJsonString(resp);
-        int index1 = result.indexOf("\",\"Source\":\"");
-        System.out.println(result);
-        int index2 = result.indexOf("\"TargetText\":\"");
-        String fianl = result.substring(index2+14,index1);
-        return fianl;
-    }
     /*
         支持地址:
         曼谷 ap-bangkok
